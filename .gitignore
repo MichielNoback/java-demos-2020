@@ -1,3 +1,8 @@
+# this is a typical .gitignore for a Java project in IntelliJ
+# the general rules are:
+# 1: don't put anything but code in the repo (it should be IDE-independent)
+# 2: don't put passwords in the repo!!!
+
 .gradle/
 .idea/
 out/
@@ -5,3 +10,4 @@ build/
 gradle/
 gradlew
 gradlew.bat
+*.iml
