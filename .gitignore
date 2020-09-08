@@ -3,6 +3,11 @@
 # 1: don't put anything but code in the repo (it should be IDE-independent)
 # 2: don't put passwords in the repo!!!
 
+# 1. maak je project
+# 2. maak een .gitignore en vul deze
+# 3. git init
+# 4. git commit -m "first commit"
+
 .gradle/
 .idea/
 out/

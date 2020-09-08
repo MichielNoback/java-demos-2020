@@ -8,7 +8,7 @@ class App {
 
     void start() {
         //Create a Bird and let it fly
-        Bird genericBird = new Bird("Generic Bird");
+        Bird genericBird = new Bird("Generic Bird");  //__init__():
         genericBird.fly();
 
         //Create a House Sparrow
