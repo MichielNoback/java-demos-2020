@@ -1,6 +1,7 @@
 //I am using Gradle to manage a Java project
 plugins {
     id 'java'
+    id "com.github.johnrengelman.shadow" version "6.0.0"
 }
 
 //The group ID
@@ -10,7 +11,7 @@ group 'nl.bioinf.java_demos_2020'
 version '0.0.1'
 
 //working with Java 11 as target
-sourceCompatibility = JavaVersion.VERSION_11
+//sourceCompatibility = JavaVersion.VERSION_11
 
 //This is where dependencies should be found
 repositories {
@@ -22,6 +23,8 @@ repositories {
 dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.2")
+    // https://mvnrepository.com/artifact/commons-cli/commons-cli
+    implementation('commons-cli:commons-cli:1.4')
 }
 
 //this says: use Gradle for test management, not IntelliJ
@@ -33,7 +36,7 @@ test {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'nl.bioinf.java_demos.lesson1.App'
+                'Main-Class': 'nl.bioinf.java_demos.deploy.CliApp'
         )
     }
 }
