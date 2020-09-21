@@ -9,10 +9,6 @@ public class CommandLineOptionsProcessor {
     private Options options;
 
     public CommandLineOptionsProcessor() {
-        init();
-    }
-
-    final void init() {
         // create Options object
         options = new Options();
         // add t option
