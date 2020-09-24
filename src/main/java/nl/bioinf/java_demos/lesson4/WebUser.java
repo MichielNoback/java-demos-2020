@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WebUser {
-    //a static/class variable
+    //a static/class variable: Constant
     public static final String REMOTE_URL_BASE = "https://www.example.com?details=yes&user=";
 
     //a static variable; defaults to "null"
@@ -72,7 +72,6 @@ public class WebUser {
     }
 
     //the String representation for printing
-
 
     @Override
     public String toString() {

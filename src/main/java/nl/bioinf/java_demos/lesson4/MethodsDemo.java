@@ -5,7 +5,7 @@ public class MethodsDemo {
         System.out.println("Remote URL=" + WebUser.REMOTE_URL_BASE);
 
         WebUser henk = new WebUser("Henk");
-        System.out.println("Henk: " + henk);
+        System.out.println("Henk: " + henk.toString());
 
         //two ways to get clearance
         System.out.println("clearance = " + WebUser.getSecurityClearance(henk));
