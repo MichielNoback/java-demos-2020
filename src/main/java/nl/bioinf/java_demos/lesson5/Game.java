@@ -8,11 +8,10 @@ public class Game {
         System.out.println("[Game] A troll enters the arena");
         gameCharacter1.shoot();
 
-
-//        System.out.println("[Game] Spawning GameCharacter2");
-//        GameCharacter2 gameCharacter2 = new GameCharacter2();
-//        Stengun gun = new Stengun();
-//        gameCharacter2.setWeapon(gun);
-//        gameCharacter2.shoot();
+        System.out.println("[Game] Spawning GameCharacter2");
+        GameCharacter2 gameCharacter2 = new GameCharacter2();
+        Shootable gun = new Stengun();
+        gameCharacter2.setWeapon(gun);
+        gameCharacter2.shoot();
     }
 }
