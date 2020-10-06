@@ -1,5 +1,6 @@
 package nl.bioinf.java_demos.lesson6;
 
+//immutable
 public class Address {
     private final String city;
     private final String street;
@@ -43,7 +44,7 @@ public class Address {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
+        //if (o instanceof Address)
         Address address = (Address) o;
 
         if (number != address.number) return false;

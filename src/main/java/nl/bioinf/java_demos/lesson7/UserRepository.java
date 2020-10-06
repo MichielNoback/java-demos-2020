@@ -31,8 +31,9 @@ public class UserRepository {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.length() < 2) continue;
-                System.out.println("line = " + line);
+                //System.out.println("line = " + line);
                 final User user = processUser(line);
+                System.out.println("user = " + user);
                 this.users.add(user);
             }
         } catch (IOException e) {
@@ -44,15 +45,36 @@ public class UserRepository {
         //Henk Hindriks;henk@example.com;Groningen;Zernikeplein 11;9701DA
         String[] userElmnts = line.split(";");
         String name = userElmnts[0];
-        String email = userElmnts[1];
+
+        String email = null; //NullPointerException
+        Address address = null;
+
+        if (userElmnts.length < 2) {
+            return new User(name, email, address);
+        }
+
+        email = userElmnts[1];  //Arie geeft een ArrayIndexOutOfBoundsException
         String city = userElmnts[2];
         String streetAndNumber = userElmnts[3];
-        String street = streetAndNumber.split(" ")[0];
-        int number = Integer.parseInt(streetAndNumber.split(" ")[1]);
+        String street;
+
+        //Willem geeft hier ArrayIndexOutOfBoundsException
+        //Desiree geeft hier een NumberFormatException
+        String[] streetNumberArr = streetAndNumber.split(" ");
+        street = streetAndNumber.split(" ")[0];
+        int number = -1;
+        if (streetNumberArr.length == 2) {
+            //String numberPattern = "\\d+";
+            try{
+                number = Integer.parseInt(streetAndNumber.split(" ")[1]);
+            } catch (NumberFormatException ex) {
+                //defaults to -1
+            }
+        }
         String zipCode = userElmnts[4];
 
-        Address address = new Address(city, street, number, zipCode);
-        System.out.println("address = " + address);
+        address = new Address(city, street, number, zipCode);
+        //System.out.println("address = " + address);
         return new User(name, email, address);
     }
 
@@ -65,16 +87,22 @@ public class UserRepository {
         Path dataPath = Paths.get(userFile);
         try (BufferedWriter writer = Files.newBufferedWriter(dataPath, Charset.forName("US-ASCII"), StandardOpenOption.WRITE)) {
             for (User user : users) {
+                System.out.println("write user = " + user);
                 writer.write(user.getName());
                 writer.write(SEPARATOR);
-                writer.write(user.getEmail());
+                writer.write(user.getEmail() == null ? "" : user.getEmail());
                 writer.write(SEPARATOR);
+                if (user.getAddress() == null) {
+                    writer.newLine();
+                    return;
+                }
+
                 writer.write(user.getAddress().getCity());
                 writer.write(SEPARATOR);
                 writer.write(user.getAddress().getStreet());
                 writer.write(" ");
                 writer.write("" + user.getAddress().getNumber());
-                System.out.println("user.getAddress().getNumber() = " + user.getAddress().getNumber());
+                //System.out.println("user.getAddress().getNumber() = " + user.getAddress().getNumber());
                 writer.write(SEPARATOR);
                 writer.write(user.getAddress().getZipCode());
                 writer.newLine();

@@ -13,7 +13,7 @@ public class UserCollectionDemo {
         System.out.println("users.size() = " + users.size());
         henk.setName("Henkie");
         System.out.println("users.size() = " + users.size());
-        System.out.println("users.contains(\"henk\") = " + users.contains("henk"));
+        System.out.println("users.contains(\"henk\") = " + users.contains(henk));
     }
 
 }
